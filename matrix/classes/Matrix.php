@@ -4,9 +4,12 @@ namespace TestTaskLikeIT;
 
 class Matrix
 {
-    private $matrix;
+    private array $matrix;
     private $sizeMatrix;
     private $rageRandom;
+    private bool $calculateSumOfDiagonals;
+    private int $sumLeftDiagonal = 0;
+    private int $sumRightDiagonal = 0;
 
     public function __construct()
     {
@@ -35,12 +38,19 @@ class Matrix
     }
 
     /**
-     * @return array Return array matrix
+     * @return \stdClass Return array matrix
      */
-    function getMatrix(): array
+    function getMatrix(): \stdClass
     {
         $this->fillMatrix();
-        return $this->matrix;
+        $obj = new \stdClass();
+        $obj->matrix = $this->matrix;
+        if ($this->calculateSumOfDiagonals) {
+            $this->getSumDiagonal(0);
+            $obj->sumLeftDiagonal = $this->sumLeftDiagonal;
+            $obj->sumRightDiagonal = $this->sumRightDiagonal;
+        }
+        return $obj;
     }
 
     /**
@@ -61,5 +71,22 @@ class Matrix
     private function randomItem(): int
     {
         return rand($this->rageRandom[0], $this->rageRandom[1]);
+    }
+
+    /**
+     * Set calculate the sum of the diagonals
+     */
+    public function calculateSumOfDiagonals()
+    {
+        $this->calculateSumOfDiagonals = true;
+        return $this;
+    }
+
+    private function getSumDiagonal(int $a)
+    {
+        for ($i = 0; $i < $this->sizeMatrix; $i++) {
+            $this->sumLeftDiagonal += $this->matrix[$i][$i];
+            $this->sumRightDiagonal += $this->matrix[$i][($i ^ $this->sizeMatrix) - 1];
+        }
     }
 }
