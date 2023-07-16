@@ -1,0 +1,26 @@
+.container{
+    width: 250px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 4px double black;
+    padding: 10px;
+    margin: 0 auto;
+    border-radius: 10%;
+    box-shadow: 10px 5px 5px gray;
+}
+
+.converter {
+    flex-direction: column;
+    display: flex;
+    height: 150px;
+    justify-content: space-around;
+}
+.field-submit input{
+    width: 100%;
+}
+.description{
+    font-size: 12px;
+}
