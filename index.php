@@ -12,6 +12,8 @@
     <div style="display: flex; flex-direction: column">
     <a href="/matrix/">Сумма диагоналей матрицы</a>
     <a href="/converter/">Конвертер валют</a>
+    <a href="/rainbow/">Радуга</a>
+    <a href="/testimonials/">Отзывы</a>
     </div>
 </main>
 </body>
