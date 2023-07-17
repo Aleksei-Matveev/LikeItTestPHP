@@ -46,7 +46,7 @@ class Matrix
         $obj = new \stdClass();
         $obj->matrix = $this->matrix;
         if ($this->calculateSumOfDiagonals) {
-            $this->getSumDiagonal(0);
+            $this->getSumDiagonal();
             $obj->sumLeftDiagonal = $this->sumLeftDiagonal;
             $obj->sumRightDiagonal = $this->sumRightDiagonal;
         }
@@ -82,7 +82,7 @@ class Matrix
         return $this;
     }
 
-    private function getSumDiagonal(int $a)
+    private function getSumDiagonal()
     {
         for ($i = 0; $i < $this->sizeMatrix; $i++) {
             $this->sumLeftDiagonal += $this->matrix[$i][$i];
