@@ -13,8 +13,8 @@
     <div class="container">
         <div class="inputs-block">
         </div>
+        <button class="button-add" onclick="validator.addFieldInputs()"></button>
         <div class="control-block">
-            <button onclick="validator.addFieldInputs()">Добавить выражение</button>
             <button onclick="validator.validate()">Проверить</button>
         </div>
     </div>

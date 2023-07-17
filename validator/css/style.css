@@ -1,6 +1,7 @@
-h2{
+h2 {
     text-align: center;
 }
+
 .container {
     width: 250px;
     min-height: 250px;
@@ -12,29 +13,50 @@ h2{
     margin: 0 auto;
     background-color: #e5e5e5;
     border-radius: 20px;
-    box-shadow: 0 10px 10px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5);
 }
+
 .inputs-block {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
+
 .item {
     margin: 10px;
     border: 0;
     border-radius: 5px;
     padding: 5px;
 }
-.control-block{
+
+.control-block {
     padding: 10px 10px;
+    width: 100%;
 }
+
 .error {
     border: 1px solid red !important;
     color: red;
     font-weight: bold;
 }
-.success{
+
+.success {
     border: 1px solid green !important;
     color: green;
     font-weight: bold;
+}
+
+.button-add {
+    width: 48px;
+    height: 48px;
+    border: none;
+    background-image: url('../images/add.png');
+    background-size: cover;
+    background-color: #e5e5e5;
+    cursor: pointer;
+}
+
+.control-block button {
+    width: 100%;
+    padding: 5px;
 }
