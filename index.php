@@ -8,13 +8,21 @@
 </head>
 <body>
 <main>
-    <h2>Тестовые задачи</h2>
-    <div style="display: flex; flex-direction: column">
-    <a href="/matrix/">Сумма диагоналей матрицы</a>
-    <a href="/converter/">Конвертер валют</a>
-    <a href="/rainbow/">Радуга</a>
-    <a href="/testimonials/">Отзывы</a>
+    <div>
+        <h2>Тестовые задачи</h2>
+        <div style="display: flex; flex-direction: column">
+            <a href="/matrix/">Сумма диагоналей матрицы</a>
+            <a href="/converter/">Конвертер валют</a>
+            <a href="/rainbow/">Радуга</a>
+            <a href="/validator/">Валидатор</a>
+            <a href="/testimonials/">Отзывы</a>
+        </div>
     </div>
 </main>
+<style>
+    main {
+        text-align: center;
+    }
+</style>
 </body>
 </html>
