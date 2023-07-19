@@ -211,3 +211,28 @@ input[type="file[]"], input[type=file] {
     width: 200px;
 
 }
+.status{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+}
+.controls-button-block {
+    text-align: end;
+}
+.activate-btn {
+    color: #fff;
+    background-color: green;
+    cursor: pointer;
+}
+.deactivate-btn {
+    color: #fff;
+    background-color: darkred;
+    cursor: pointer;
+
+}
+.delete-btn {
+    color: #fff;
+    background-color: darkred;
+    cursor: pointer;
+
+}
