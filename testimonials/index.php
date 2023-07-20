@@ -1,11 +1,5 @@
 <?php
-spl_autoload_register(function ($class_name) {
-    include 'app/Repository/' . $class_name . '.php';
-});
-
-$repository = new ReviewsRepository();
-
-$array = $repository->getAll();
+$array = json_decode(file_get_contents('http://likeit.local/testimonials/api/getlist/'), true);
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -35,7 +29,7 @@ $array = $repository->getAll();
                             <?php if (!empty($item['files'])):
                                 $files = explode(';',$item['files'] );
                                 foreach ($files as $file): ?>
-                                    <a href="uploads/1/1.jpg" target="_blank">
+                                    <a href="uploads/<?=$item['id']?>/<?= $file?>" target="_blank">
                                         <img src="uploads/<?=$item['id']?>/<?= $file?>">
                                     </a>
                                 <?php endforeach;

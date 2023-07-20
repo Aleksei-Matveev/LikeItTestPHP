@@ -1,11 +1,5 @@
 <?php
-spl_autoload_register(function ($class_name) {
-    include '../app/Repository/' . $class_name . '.php';
-});
-
-$repository = new ReviewsRepository();
-
-$array = $repository->getAll(true);
+$array = json_decode(file_get_contents('http://likeit.local/testimonials/admin/api/getlist/'), true);
 ?>
 <!DOCTYPE html>
 <html lang="ru">

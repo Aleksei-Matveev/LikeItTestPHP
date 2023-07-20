@@ -1,10 +1,9 @@
 <?php
 
-
-class ReviewsRepository implements IReviewsRepository
+class UserRepository implements IReviewsRepository
 {
     protected PDO $db;
-    protected array $reviews = [];
+    protected array $users = [];
 
     public function __construct()
     {
@@ -12,14 +11,14 @@ class ReviewsRepository implements IReviewsRepository
     }
 
     /**
-     * @return array|bool
+     * @return mixed
      */
-    public function getAll(): array|bool
+    public function getAll(): mixed
     {
-        $res = $this->db->prepare("SELECT r.id, r.review, u.name, r.date, (SELECT GROUP_CONCAT(NAME SEPARATOR ';') FROM images AS i WHERE r.id = i.review_id) AS files FROM reviews AS r, users AS u WHERE r.author_id = u.id AND r.active = 1");
+        $res = $this->db->prepare("SELECT * FROM users");
         $res->execute();
-        $this->reviews = $res->fetchAll(PDO::FETCH_ASSOC);
-        return $this->reviews;
+        $this->users = $res->fetchAll(PDO::FETCH_ASSOC);
+        return $this->users;
     }
 
     /**
@@ -28,7 +27,7 @@ class ReviewsRepository implements IReviewsRepository
      */
     public function Create($review)
     {
-        return ['Created' => $review];
+        // TODO: Implement Create() method.
     }
 
     /**

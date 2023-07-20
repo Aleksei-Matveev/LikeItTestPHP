@@ -10,7 +10,7 @@ class DB
     {
         if (!isset(self::$instances)) {
             try {
-                self::$instances = new PDO('mysql:dbname=review;host=localhost', 'root', '');
+                self::$instances = new PDO('mysql:dbname=review;host=localhost', 'root', 'root');
             } catch (PDOException $e) {
                 die($e->getMessage());
             }
