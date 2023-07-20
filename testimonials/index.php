@@ -1,11 +1,11 @@
 <?php
-require_once ('Classes/DB.php');
-$db = DB::getInstance();
+spl_autoload_register(function ($class_name) {
+    include 'app/Repository/' . $class_name . '.php';
+});
 
-$sth = $db->prepare("SELECT *, (SELECT GROUP_CONCAT(NAME SEPARATOR ';') FROM images AS i WHERE r.id = i.review_id) AS files FROM review AS r, user AS u
-WHERE r.author_id = u.id  AND r.active = 1");
-$sth->execute();
-$array = $sth->fetchAll(PDO::FETCH_ASSOC);
+$repository = new ReviewsRepository();
+
+$array = $repository->getAll();
 ?>
 <!DOCTYPE html>
 <html lang="ru">
