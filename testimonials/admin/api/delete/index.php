@@ -1,5 +1,6 @@
 <?php
-include '../../app/Repository/ReviewsRepository.php';
+include '../../../app/Repository/AdminRepository.php';
+include '../../../app/Models/Review.php';
 
 $request = json_decode(file_get_contents('php://input'), true);
 
@@ -8,13 +9,9 @@ if(empty($request)){
     echo json_encode(['status' => 'error']);
     return;
 }
+$repository = new AdminRepository();
 
-$user = new User([]);
-
-$repository = new ReviewsRepository();
-
-
-
+$result = $repository->Delete($request['id']);
 
 header('Content-type: application/json');
-echo json_encode($request);
+echo json_encode(['data' => $result]);

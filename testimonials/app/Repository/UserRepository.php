@@ -3,7 +3,6 @@
 class UserRepository implements IReviewsRepository
 {
     protected PDO $db;
-    protected array $users = [];
 
     public function __construct()
     {
@@ -13,19 +12,18 @@ class UserRepository implements IReviewsRepository
     /**
      * @return mixed
      */
-    public function getAll(): mixed
+    public function getAll(): array
     {
         $res = $this->db->prepare("SELECT * FROM users");
         $res->execute();
-        $this->users = $res->fetchAll(PDO::FETCH_ASSOC);
-        return $this->users;
+        return $res->fetchAll(PDO::FETCH_ASSOC);
     }
 
     /**
      * @param $review
      * @return mixed
      */
-    public function Create($review)
+    public function Create($user)
     {
         // TODO: Implement Create() method.
     }
@@ -34,7 +32,7 @@ class UserRepository implements IReviewsRepository
      * @param $id
      * @return mixed
      */
-    public function Update($id)
+    public function Update($user)
     {
         // TODO: Implement Update() method.
     }

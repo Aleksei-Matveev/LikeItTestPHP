@@ -1,28 +1,16 @@
 <?php
-$array = json_decode(file_get_contents('http://likeit.local/testimonials/admin/api/getlist/'), true);
+$title = 'Админка';
+require(dirname(__DIR__) . "/layouts/header.php");
+$reviews = json_decode(file_get_contents('http://likeit.local/testimonials/admin/api/getlist/'), true);
 ?>
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="../dist/css/style.css">
-    <title>Отзывы</title>
-</head>
-<body>
-<main>
     <section class="reviews">
         <div class="container">
             <h2>Административный раздел</h2>
             <div class="header-block">
-                <div class="sort-block">
-                    <label>сортировка: </label><span> активне </span>/<span> неактивные</span>/<span> по дате</span>
-                </div>
             </div>
             <div class="wrapper">
                 <?php
-                foreach ($array as $item):?>
+                foreach ($reviews as $item):?>
                     <div class="review-card">
                         <div class="status">
                             <?php if ($item['active']): ?>
@@ -46,22 +34,22 @@ $array = json_decode(file_get_contents('http://likeit.local/testimonials/admin/a
                         <div class="info">
                             <h4><?= $item['name'] ?>, </h4>
                             <span><?= date('d/m/y в H:i', strtotime($item['date'])) ?></span>
-
                         </div>
                         <div class="controls-button-block">
                             <?php if ($item['active']): ?>
-                                <button class="deactivate-btn">Деактивировать</button>
+                                <button class="deactivate-btn status-btn" data-id="<?= $item['id'] ?>">Деактивировать
+                                </button>
                             <?php else: ?>
-                                <button class="activate-btn">Активировать</button>
+                                <button class="activate-btn status-btn" data-id="<?= $item['id'] ?>">Активировать
+                                </button>
                             <?php endif; ?>
-                            <button class="delete-btn">Удалить</button>
+                            <button class="delete-btn" data-id="<?= $item['id']?>">Удалить</button>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
         </div>
     </section>
+    <script src="<?= ROOT ?>/dist/js/admin.js"></script>
 
-</main>
-</body>
-</html>
+<?php require(dirname(__DIR__) . "/layouts/footer.php"); ?>

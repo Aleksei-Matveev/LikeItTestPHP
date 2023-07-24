@@ -1,17 +1,9 @@
 <?php
+$title = 'Отзывы';
+require(__DIR__ . "/layouts/header.php");
 $array = json_decode(file_get_contents('http://likeit.local/testimonials/api/getlist/'), true);
 ?>
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" type="text/css" href="dist/css/style.css">
-    <title>Отзывы</title>
-</head>
-<body>
-<main>
+
     <section class="reviews">
         <div class="container">
             <h2>Отзывы</h2>
@@ -27,18 +19,18 @@ $array = json_decode(file_get_contents('http://likeit.local/testimonials/api/get
                         <p><?= $item['review'] ?></p>
                         <div class="image-block">
                             <?php if (!empty($item['files'])):
-                                $files = explode(';',$item['files'] );
+                                $files = explode(';', $item['files']);
                                 foreach ($files as $file): ?>
-                                    <a href="uploads/<?=$item['id']?>/<?= $file?>" target="_blank">
-                                        <img src="uploads/<?=$item['id']?>/<?= $file?>">
+                                    <a href="uploads/<?= $item['id'] ?>/<?= $file ?>" target="_blank">
+                                        <img src="uploads/<?= $item['id'] ?>/<?= $file ?>">
                                     </a>
                                 <?php endforeach;
                             endif;
                             ?>
                         </div>
                         <div class="info">
-                            <h4><?= $item['name']?>, </h4>
-                            <span><?= date('d/m/y в H:i', strtotime($item['date']))?></span>
+                            <h4><?= $item['name'] ?>, </h4>
+                            <span><?= date('d/m/y в H:i', strtotime($item['date'])) ?></span>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -51,10 +43,10 @@ $array = json_decode(file_get_contents('http://likeit.local/testimonials/api/get
                 <div class="modal-review__close-overlay"></div>
             </button>
             <h3 class="modal-review__title title">Оставить отзыв</h3>
-            <form enctype="multipart/form-data" action="" method="post" class="modal-review__form">
-                <input class="modal-review__input" type="text" required="" name="first_name" placeholder="Ваше имя">
-                <input class="modal-review__input" type="email" required="" name="email" placeholder="Ваше email">
-                <textarea class="modal-review__textarea" required="" name="message" placeholder="Ваш отзыв"></textarea>
+            <form enctype="multipart/form-data"  method="post" class="modal-review__form" id="add_review">
+                <input class="modal-review__input" type="text"  name="first_name" placeholder="Ваше имя">
+                <input class="modal-review__input" type="text"  name="email" placeholder="Ваше email">
+                <textarea class="modal-review__textarea"  name="message" placeholder="Ваш отзыв"></textarea>
                 <input id="review-files" class="modal-review__input" type="file" name="files[]" placeholder="Ваше email"
                        multiple="multiple" accept="image">
                 <div class="files-block">
@@ -66,7 +58,5 @@ $array = json_decode(file_get_contents('http://likeit.local/testimonials/api/get
         </div>
     </section>
     <div class="overlay-modal hidden"></div>
-</main>
-<script src="dist/js/script.js"></script>
-</body>
-</html>
+    <script src="<?= ROOT ?>/dist/js/index.js"></script>
+<?php require(__DIR__ . "/layouts/footer.php"); ?>

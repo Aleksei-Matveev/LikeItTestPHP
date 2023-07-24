@@ -2,18 +2,11 @@
 
 class User
 {
-    private $id;
-    private $name;
-    private $email;
-    private $table;
+    public int $id;
+    public string $name;
+    public string $email;
 
-    private function fill(){
-
+    public function __construct($array)
+    {
     }
-    public function getById($id){
-
-    }
-
-
-
 }

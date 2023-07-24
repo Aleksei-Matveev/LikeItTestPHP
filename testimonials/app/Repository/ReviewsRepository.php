@@ -1,5 +1,5 @@
 <?php
-
+include 'IReviewsRepository.php';
 
 class ReviewsRepository implements IReviewsRepository
 {
